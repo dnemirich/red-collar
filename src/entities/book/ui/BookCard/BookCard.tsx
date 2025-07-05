@@ -1,21 +1,23 @@
 import s from './bookCard.module.scss'
+import type {Book} from "../../model";
 
 type Props = {
-    img?: string;
-    title: string;
-    authors: string[];
-    description: string;
+    book: Book
 }
 
-export const BookCard = ({img, authors, description, title}: Props) => {
+export const BookCard = ({book}: Props) => {
+    const { title, authors, description, imageLinks } = book.volumeInfo
+
     return (
-    <div className={s.card}>
-        <div>
-            <img src={img} alt={title} />
+    <li className={s.card}>
+
+            { imageLinks?.thumbnail && <img className={s.img} src={imageLinks.thumbnail} alt={title}/>}
+
+        <div className={s.content}>
+            <h2 className={s.title}>{title}</h2>
+            <h3 className={s.authors}>{ authors && authors.length > 5 ? authors.slice(0,5).join(', ').concat(' et al.') : authors?.join(', ')}</h3>
+            <p className={s.description}>{description}</p>
         </div>
-        <h2>{title}</h2>
-        <h3>{authors.join(', ')}</h3>
-        <p>{description}</p>
-    </div>
+    </li>
     )
 }

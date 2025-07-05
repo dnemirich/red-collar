@@ -2,7 +2,9 @@
     --primary-light-color: #FFFFFF;
     --bg-color: #000000;
     --accent-color: #F51B1B;
-    --pale-color: #808080;
+    --pale-color: rgba(128, 128, 128, 0.26);
+    --pale-text-color: rgba(128, 128, 128, 0.73);
+    --dark-text-color: #666;
     --primary-font: 'TT Commons', sans-serif;
     --secondary-font: 'Redcollar', sans-serif;
     --font-size-base: 10px;

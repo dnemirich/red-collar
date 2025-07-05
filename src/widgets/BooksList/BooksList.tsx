@@ -1,5 +1,5 @@
 import s from './booksList.module.scss'
-import type {Book} from "entities/book";
+import {type Book, BookCard} from "entities/book";
 
 type Props = {
     data: Book[]
@@ -8,7 +8,7 @@ export const BooksList = ({data}: Props) => {
     return (
         <ul className={s.booksList}>
             {data.map(book => (
-                <li key={book.id}>{book.volumeInfo.title}</li>
+               <BookCard key={book.id} book={book}/>
             ))}
         </ul>
     )
