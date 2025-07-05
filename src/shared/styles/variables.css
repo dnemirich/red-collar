@@ -1,0 +1,9 @@
+:root {
+    --primary-light-color: #FFFFFF;
+    --bg-color: #000000;
+    --accent-color: #F51B1B;
+    --pale-color: #808080;
+    --primary-font: 'TT Commons', sans-serif;
+    --secondary-font: 'Redcollar', sans-serif;
+    --font-size-base: 10px;
+}
