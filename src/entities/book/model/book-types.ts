@@ -114,3 +114,17 @@ export type FetchBooksParams = {
     startIndex?: number;
     maxResults?: number;
 }
+
+export type BookSummary = {
+    id: string
+    volumeInfo: {
+        title: string
+        authors?: string[]
+        description?: string
+        imageLinks?: {
+            thumbnail?: string
+        }
+    }
+}
+
+export type BookEnlargedSummary = Pick<Book, 'id' | 'volumeInfo'>

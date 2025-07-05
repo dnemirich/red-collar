@@ -1,8 +1,8 @@
 import s from './booksList.module.scss'
-import {type Book, BookCard} from "entities/book";
+import {BookCard, type BookSummary} from "entities/book";
 
 type Props = {
-    data: Book[]
+    data: BookSummary[]
 }
 export const BooksList = ({data}: Props) => {
     return (

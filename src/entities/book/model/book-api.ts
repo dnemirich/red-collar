@@ -1,18 +1,21 @@
 import {api} from "shared/lib/base-api.ts";
-import type {Book, FetchBooksParams, FetchBooksResponse} from "./book-types.ts";
+import type {BookEnlargedSummary, BookSummary, FetchBooksParams} from "./book-types.ts";
+import {mapBook, mapBookLargeVersion} from "../lib";
 
 
-export const fetchBooks = async (params: FetchBooksParams): Promise<FetchBooksResponse> => {
+export const fetchBooks = async (params: FetchBooksParams): Promise<{items: BookSummary[]}> => {
 
     const response = await api.get('/volumes', {
         params,
     });
 
-    return response.data;
+    const items=  response.data.items?.map(mapBook) ?? [];
+
+    return {items};
 };
 
-export const fetchBookById = async (id: string): Promise<Book> => {
+export const fetchBookById = async (id: string): Promise<BookEnlargedSummary> => {
     const response = await api.get(`/volumes/${id}`);
 
-    return response.data;
+    return mapBookLargeVersion(response.data);
 }

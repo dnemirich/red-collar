@@ -7,7 +7,7 @@ type Props = {
     onSearch: (searchTerm: string) => void;
 }
 export const SearchInput = ({onSearch}: Props) => {
-    const [value, setValue] = useState<string>('Java script');
+    const [value, setValue] = useState<string>('JavaScript');
 
     const handleSearch = useMemo(
         () => debounce(onSearch, 500),
