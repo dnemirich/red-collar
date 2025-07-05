@@ -1,8 +1,8 @@
 import {api} from "shared/lib/base-api.ts";
-import type {FetchBooksParams, FetchBooksResponse} from "./book-types.ts";
+import type {Book, FetchBooksParams, FetchBooksResponse} from "./book-types.ts";
 
 
-const fetchBooks = async (params: FetchBooksParams): Promise<FetchBooksResponse> => {
+export const fetchBooks = async (params: FetchBooksParams): Promise<FetchBooksResponse> => {
 
     const response = await api.get('/volumes', {
         params,
@@ -10,3 +10,9 @@ const fetchBooks = async (params: FetchBooksParams): Promise<FetchBooksResponse>
 
     return response.data;
 };
+
+export const fetchBookById = async (id: string): Promise<Book> => {
+    const response = await api.get(`/volumes/${id}`);
+
+    return response.data;
+}
