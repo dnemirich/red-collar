@@ -10,8 +10,8 @@ import s from './homePage.module.scss'
 const maxResults = 9;
 
 export const HomePage = () => {
-    const [searchTerm, setSearchTerm] = useState<string>('Java Script');
-    const [filter, setFilter] = useState<Filter>('full');
+    const [searchTerm, setSearchTerm] = useState<string>('JavaScript');
+    const [filter, setFilter] = useState<Filter>('ebooks');
 
     const { data, isLoading, error } = useQuery({
         queryKey: ['books', searchTerm, filter],
