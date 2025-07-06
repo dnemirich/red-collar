@@ -27,7 +27,7 @@ export const ToggleFavouriteBtn = ({book}: Props) => {
             onClick={handleClick}
             aria-label={favourite ? 'Remove from favourites' : 'Add to favourites'}
         >
-            <Heart/>
+            <Heart size={18}/>
         </button>
     )
 }

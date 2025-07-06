@@ -1,0 +1,92 @@
+.card {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 3rem;
+  padding-top: 10%;
+  margin: 0 auto;
+
+  max-width: 100rem;
+  width: 100%;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+
+  font-size: clamp(1.6rem, 2.5vw, 2rem);
+
+  width: 50rem;
+}
+
+.imgWrapper {
+  position: relative;
+  width: 30rem;
+  height: 40rem;
+  flex-shrink: 0;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
+}
+
+.hidden {
+  display: none;
+}
+
+.skeleton {
+  width: 100%;
+  height: 100%;
+  background-color: var(--pale-color);
+}
+
+.title {
+  font-family: var(--secondary-font);
+  font-size: clamp(3rem, 5vw, 3rem);
+}
+
+
+.authors {
+  color: var(--dark-text-color);
+}
+
+.description {
+  font-size: clamp(1.4rem, 2.5vw, 1.5rem);
+  text-align: justify;
+
+}
+
+.categories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--accent-color);
+  padding: 0.4rem 1rem;
+  border-radius: 0.8rem;
+}
+
+.pageCount,
+.publishDate{
+ & > span {
+   font-weight: 600;
+ }
+}
+
+.readMore {
+  color: var(--accent-color);
+  font-family: var(--secondary-font);
+  font-weight: 600;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
