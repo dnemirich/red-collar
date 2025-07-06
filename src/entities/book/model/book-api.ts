@@ -3,7 +3,7 @@ import type {BookEnlargedSummary, BookSummary, FetchBooksParams} from "./book-ty
 import {mapBook, mapBookLargeVersion} from "../lib";
 
 
-export const fetchBooks = async (params: FetchBooksParams): Promise<{items: BookSummary[]}> => {
+export const fetchBooks = async (params: FetchBooksParams): Promise<{items: BookSummary[], totalItems: number}> => {
 
     const response = await api.get('/volumes', {
         params,
@@ -11,7 +11,7 @@ export const fetchBooks = async (params: FetchBooksParams): Promise<{items: Book
 
     const items=  response.data.items?.map(mapBook) ?? [];
 
-    return {items};
+    return {items, totalItems: response.data.totalItems};
 };
 
 export const fetchBookById = async (id: string): Promise<BookEnlargedSummary> => {
