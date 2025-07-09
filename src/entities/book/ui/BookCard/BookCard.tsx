@@ -1,15 +1,17 @@
-import s from './bookCard.module.scss'
-import type {BookSummary} from "../../model";
-import {useNavigate} from "react-router";
 import {ToggleFavouriteBtn} from "features/toggle-favourite";
+import {useNavigate} from "react-router";
 import {ROUTES} from "shared/constants/routes.ts";
+
+import type {BookSummary} from "../../model";
+
+import s from './bookCard.module.scss'
 
 type Props = {
     book: BookSummary
 }
 
 export const BookCard = ({book}: Props) => {
-    const {title, authors, description, imageLinks} = book.volumeInfo
+    const {authors, description, imageLinks, title} = book.volumeInfo
 
     const navigate = useNavigate();
     const handleClick = () => {
@@ -20,7 +22,7 @@ export const BookCard = ({book}: Props) => {
         <li className={s.card} onClick={handleClick}>
             <ToggleFavouriteBtn book={book}/>
 
-            {imageLinks?.thumbnail && <img className={s.img} src={imageLinks.thumbnail} alt={title}/>}
+            {imageLinks?.thumbnail && <img alt={title} className={s.img} src={imageLinks.thumbnail}/>}
 
             <div className={s.content}>
                 <h2 className={s.title}>{title}</h2>

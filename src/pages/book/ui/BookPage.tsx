@@ -1,22 +1,33 @@
-import {useParams} from "react-router";
-import {LayoutContainer} from "shared/ui/LayoutContainer";
 import {useQuery} from "@tanstack/react-query";
-import {fetchBookById, BookFullCard} from "entities/book";
+import {BookFullCard, fetchBookById} from "entities/book";
+import {useParams} from "react-router";
+import {useAppStore} from "shared/model/appStore.ts";
+import {LayoutContainer, Loader} from "shared/ui";
+
+import s from './bookPage.module.scss'
 
 export const BookPage = () => {
-    const { bookId } = useParams<{ bookId: string }>();
+    const {bookId} = useParams<{ bookId: string }>();
+    const {setError} = useAppStore();
 
-    const { data, isLoading, error } = useQuery({
-        queryKey: [`book/${bookId}`, bookId],
+    const {data, error, isLoading} = useQuery({
         enabled: !!bookId,
         queryFn: () => fetchBookById(bookId!),
+        queryKey: [`book/${bookId}`, bookId],
         staleTime: Infinity,
     });
 
+    if (error) setError(error?.message);
+
     return (
         <LayoutContainer>
-            {isLoading && <p>Loading...</p>}
-            {error && <p>Error</p>}
+            {
+                isLoading &&
+                <div className={s.loaderWrapper}>
+                    {<Loader/>}
+                </div>
+            }
+
             {data && <BookFullCard book={data}/>}
         </LayoutContainer>
     )

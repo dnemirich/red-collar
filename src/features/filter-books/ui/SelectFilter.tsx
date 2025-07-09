@@ -1,5 +1,7 @@
-import {useEffect, useRef, useState} from 'react';
 import type { Filter } from 'entities/book';
+
+import {useEffect, useRef, useState} from 'react';
+
 import s from './selectFilter.module.scss';
 
 type Props = {
@@ -44,8 +46,8 @@ export const SelectFilter = ({ onSelect }: Props) => {
                 <ul className={s.dropdown}>
                     {FILTERS.map((filter) => (
                         <li
-                            key={filter}
                             className={s.option}
+                            key={filter}
                             onClick={() => handleSelect(filter)}
                         >
                             {filter}

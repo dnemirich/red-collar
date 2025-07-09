@@ -1,8 +1,10 @@
+import type {BookSummary} from "entities/book";
+
+import {getFavourites} from "features/toggle-favourite";
+import {useEffect, useState} from "react";
 import {LayoutContainer} from "shared/ui/LayoutContainer";
 import {BooksList} from "widgets/BooksList";
-import {useEffect, useState} from "react";
-import type {BookSummary} from "entities/book";
-import {getFavourites} from "features/toggle-favourite";
+
 import s from './favouritesPage.module.scss'
 
 export const FavouritesPage = () => {

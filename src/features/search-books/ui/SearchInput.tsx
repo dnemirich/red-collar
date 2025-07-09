@@ -1,7 +1,8 @@
-import s from './searchInput.module.scss'
+import debounce from 'lodash/debounce'
 import {Search} from "lucide-react";
 import {type ChangeEvent, useMemo, useState} from "react";
-import debounce from 'lodash/debounce'
+
+import s from './searchInput.module.scss'
 
 type Props = {
     onSearch: (searchTerm: string) => void;
@@ -24,7 +25,7 @@ export const SearchInput = ({onSearch}: Props) => {
 
     return (
         <div className={s.inputContainer}>
-            <input type="text" className={s.input} placeholder={'Search books'}  value={value} onChange={handleInputChange}/>
+            <input className={s.input} onChange={handleInputChange} placeholder={'Search books'}  type="text" value={value}/>
             <Search className={s.logo}/>
         </div>
     )

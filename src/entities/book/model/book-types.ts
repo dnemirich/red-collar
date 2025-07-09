@@ -1,130 +1,130 @@
 export type Book = {
-    kind: 'books#volume';
-    id: string;
-    etag: string;
-    selfLink: string;
-    volumeInfo: {
-        title: string;
-        subtitle?: string;
-        authors?: string[];
-        publisher?: string;
-        publishedDate?: string;
-        description?: string;
-        industryIdentifiers?: {
-            type: string;
-            identifier: string;
-        }[];
-        pageCount?: number;
-        dimensions?: {
-            height?: string;
-            width?: string;
-            thickness?: string;
-        };
-        printType?: string;
-        mainCategory?: string;
-        categories?: string[];
-        averageRating?: number;
-        ratingsCount?: number;
-        contentVersion?: string;
-        imageLinks?: {
-            smallThumbnail?: string;
-            thumbnail?: string;
-            small?: string;
-            medium?: string;
-            large?: string;
-            extraLarge?: string;
-        };
-        language?: string;
-        previewLink?: string;
-        infoLink?: string;
-        canonicalVolumeLink?: string;
-    };
-    userInfo?: {
-        review?: any;
-        readingPosition?: any;
-        isPurchased?: boolean;
-        isPreordered?: boolean;
-        updated?: string;
-    };
-    saleInfo?: {
+    accessInfo?: {
+        accessViewStatus: string;
         country: string;
-        saleability: string;
-        onSaleDate?: string;
+        downloadAccess?: {
+            deviceAllowed: boolean;
+            downloadsAcquired: number;
+            justAcquired: boolean;
+            kind: 'books#downloadAccessRestriction';
+            maxDownloadDevices: number;
+            message: string;
+            nonce: string;
+            reasonCode: string;
+            restricted: boolean;
+            signature: string;
+            source: string;
+            volumeId: string;
+        };
+        embeddable: boolean;
+        epub: {
+            acsTokenLink?: string;
+            downloadLink?: string;
+            isAvailable: boolean;
+        };
+        pdf: {
+            acsTokenLink?: string;
+            downloadLink?: string;
+            isAvailable: boolean;
+        };
+        publicDomain: boolean;
+        textToSpeechPermission: string;
+        viewability: string;
+        webReaderLink: string;
+    };
+    etag: string;
+    id: string;
+    kind: 'books#volume';
+    saleInfo?: {
+        buyLink?: string;
+        country: string;
         isEbook: boolean;
         listPrice?: {
             amount: number;
             currencyCode: string;
         };
+        onSaleDate?: string;
         retailPrice?: {
             amount: number;
             currencyCode: string;
         };
-        buyLink?: string;
-    };
-    accessInfo?: {
-        country: string;
-        viewability: string;
-        embeddable: boolean;
-        publicDomain: boolean;
-        textToSpeechPermission: string;
-        epub: {
-            isAvailable: boolean;
-            downloadLink?: string;
-            acsTokenLink?: string;
-        };
-        pdf: {
-            isAvailable: boolean;
-            downloadLink?: string;
-            acsTokenLink?: string;
-        };
-        webReaderLink: string;
-        accessViewStatus: string;
-        downloadAccess?: {
-            kind: 'books#downloadAccessRestriction';
-            volumeId: string;
-            restricted: boolean;
-            deviceAllowed: boolean;
-            justAcquired: boolean;
-            maxDownloadDevices: number;
-            downloadsAcquired: number;
-            nonce: string;
-            source: string;
-            reasonCode: string;
-            message: string;
-            signature: string;
-        };
+        saleability: string;
     };
     searchInfo?: {
         textSnippet: string;
     };
+    selfLink: string;
+    userInfo?: {
+        isPreordered?: boolean;
+        isPurchased?: boolean;
+        readingPosition?: unknown;
+        review?: unknown;
+        updated?: string;
+    };
+    volumeInfo: {
+        authors?: string[];
+        averageRating?: number;
+        canonicalVolumeLink?: string;
+        categories?: string[];
+        contentVersion?: string;
+        description?: string;
+        dimensions?: {
+            height?: string;
+            thickness?: string;
+            width?: string;
+        };
+        imageLinks?: {
+            extraLarge?: string;
+            large?: string;
+            medium?: string;
+            small?: string;
+            smallThumbnail?: string;
+            thumbnail?: string;
+        };
+        industryIdentifiers?: {
+            identifier: string;
+            type: string;
+        }[];
+        infoLink?: string;
+        language?: string;
+        mainCategory?: string;
+        pageCount?: number;
+        previewLink?: string;
+        printType?: string;
+        publishedDate?: string;
+        publisher?: string;
+        ratingsCount?: number;
+        subtitle?: string;
+        title: string;
+    };
 };
 
 
-export type FetchBooksResponse = {
-    kind: string,
-    totalItems: number,
-    items: Book[]
-}
-
-export type Filter = 'ebooks' | 'free-ebooks' | 'full' | 'paid-ebooks' | 'partial'
-
-export type FetchBooksParams = {
-    q: string;
-    filter?: Filter;
-    startIndex?: number;
-    maxResults?: number;
-}
+export type BookEnlargedSummary = Pick<Book, 'id' | 'volumeInfo'>
 
 export type BookSummary = {
     id: string
     volumeInfo: {
-        title: string
         authors?: string[]
         description?: string
         imageLinks?: {
             thumbnail?: string
         }
+        title: string
     }
 }
 
-export type BookEnlargedSummary = Pick<Book, 'id' | 'volumeInfo'>
+export type FetchBooksParams = {
+    filter?: Filter;
+    maxResults?: number;
+    q: string;
+    startIndex?: number;
+}
+
+export type FetchBooksResponse = {
+    items: BookSummary[]
+    // kind: string,
+    totalItems: number,
+}
+
+export type Filter = 'ebooks' | 'free-ebooks' | 'full' | 'paid-ebooks' | 'partial'

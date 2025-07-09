@@ -1,7 +1,9 @@
-import s from './bookFullCard.module.scss'
-import type {BookEnlargedSummary} from "../../model";
-import {convertDateFormat} from "../../lib/data-helpers.ts";
 import {useState} from "react";
+
+import type {BookEnlargedSummary} from "../../model";
+
+import {convertDateFormat} from "../../lib/data-helpers.ts";
+import s from './bookFullCard.module.scss'
 
 type Props = {
     book: BookEnlargedSummary
@@ -11,7 +13,7 @@ export const BookFullCard = ({book}: Props) => {
     const [expanded, setExpanded] = useState(false);
     const [isImageLoaded, setIsImageLoaded] = useState(false);
 
-    const {title, authors, description, imageLinks, pageCount, publishedDate, categories} = book.volumeInfo
+    const {authors, categories, description, imageLinks, pageCount, publishedDate, title} = book.volumeInfo
 
     const formattedDate = publishedDate && convertDateFormat(publishedDate)
     const formattedCategories = categories && Array.from(new Set(categories.map(category => category.split('/')).flat()))
@@ -27,10 +29,10 @@ export const BookFullCard = ({book}: Props) => {
                 {!isImageLoaded && <div className={s.skeleton} />}
                 {imageLinks?.small && (
                     <img
-                        className={`${s.img} ${!isImageLoaded ? s.hidden : ''}`}
-                        src={imageLinks.small}
                         alt={title}
+                        className={`${s.img} ${!isImageLoaded ? s.hidden : ''}`}
                         onLoad={() => setIsImageLoaded(true)}
+                        src={imageLinks.small}
                     />
                 )}
             </div>
@@ -41,7 +43,7 @@ export const BookFullCard = ({book}: Props) => {
                 <p className={s.publishDate}>Publication date: <span>{formattedDate}</span></p>
                 <p className={s.categories}>{
                     formattedCategories?.map((category, index) => (
-                        <span key={index} className={s.category}>{category}</span>
+                        <span className={s.category} key={index}>{category}</span>
                     ))
                 }</p>
                 {/*<p className={s.description}>{plainText}</p>*/}

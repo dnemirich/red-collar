@@ -1,17 +1,18 @@
-import {LayoutContainer} from "shared/ui/LayoutContainer";
 import {Library} from "lucide-react";
-import {ROUTES} from "shared/constants/routes.ts";
 import {Link, useLocation} from "react-router";
+import {ROUTES} from "shared/constants/routes.ts";
+import {LayoutContainer} from "shared/ui/LayoutContainer";
+
 import s from './header.module.scss'
 
 const NAV_LINKS = [
     {
-        label: 'Home',
         href: ROUTES.HOME,
+        label: 'Home',
     },
     {
-        label: 'Favourites',
         href: ROUTES.FAVOURITES,
+        label: 'Favourites',
     },
 ]
 
@@ -31,8 +32,8 @@ export const Header = () => {
                     </div>
                     <nav>
                         <ul className={s.navList}>
-                            {NAV_LINKS.map(({label, href}, index) => (
-                                <li key={index} className={`${s.navItem} ${location.pathname === href ? s.navItemActive: ''}`}><Link to={href}>{label}</Link></li>
+                            {NAV_LINKS.map(({href, label}, index) => (
+                                <li className={`${s.navItem} ${location.pathname === href ? s.navItemActive: ''}`} key={index}><Link to={href}>{label}</Link></li>
                             ))}
                         </ul>
                     </nav>
