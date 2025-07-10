@@ -1,0 +1,32 @@
+.header {
+  margin: 2rem 0;
+  padding: 0 2rem;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.logo,
+.navItem {
+  transition: color 0.3s ease-in-out;
+
+  &:hover {
+    color: var(--accent-color);
+  }
+}
+
+.navItemActive {
+  color: var(--accent-color);
+}
+
+.navList {
+  display: flex;
+  gap: 2rem;
+
+  font-family: var(--secondary-font), sans-serif;
+  text-transform: uppercase;
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
+}

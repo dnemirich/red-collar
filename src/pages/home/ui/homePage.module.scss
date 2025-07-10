@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.refContainer {
+  height: 3rem;
+  margin-top: 0.2rem;
+}
+
+.infoPlaceholder {
+  font-size: clamp(2rem, 2.5vw, 3.4rem);
+  font-family: var(--secondary-font), sans-serif;
+  color: var(--accent-color);
+
+  align-self: center;
+  padding-top: 20%;
+}
+
+@media screen and (max-width: 500px) {
+  .header {
+    flex-direction: column;
+  }
+}
