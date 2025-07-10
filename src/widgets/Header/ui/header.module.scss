@@ -1,5 +1,6 @@
 .header {
   margin: 2rem 0;
+  padding: 0 2rem;
 }
 
 .wrapper {
@@ -27,5 +28,5 @@
 
   font-family: var(--secondary-font);
   text-transform: uppercase;
-  font-size: clamp(2rem, 2.5vw, 2.4rem);
+  font-size: clamp(1.6rem, 2.5vw, 2.4rem);
 }

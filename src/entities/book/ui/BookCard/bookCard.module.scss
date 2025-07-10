@@ -1,24 +1,30 @@
 .card {
   background-color: var(--primary-light-color);
-  height: 20rem;
+  min-height: 20rem;
   border-radius: 0.8rem;
   border: 0.4rem solid transparent;
   position: relative;
-  padding: 0.4rem 1rem;
+  padding: 1rem 1rem;
 
   color: var(--bg-color);
 
   display: flex;
-  align-items: center;
   gap: 1.5rem;
 
   overflow: hidden;
   transition: border 0.5s ease-in, transform 0.3s ease;
 
-  &:hover {
+  &:hover,
+  &:focus {
     cursor: pointer;
     transform: translateY(-0.4rem);
-    border: 0.4rem solid var(--accent-color);
+    border: 0.3rem solid var(--accent-color);
+  }
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
   }
 }
 
@@ -28,7 +34,8 @@
   flex-direction: column;
   justify-content: center;
 
-  min-width: 0;
+  min-width: 10rem;
+  max-width: 25rem;
 }
 
 
@@ -37,12 +44,6 @@
   height: auto;
   object-fit: contain;
   border-radius: 4px;
-}
-
-
-.title {
-  font-family: var(--secondary-font);
-  font-size: 1.6rem;
 }
 
 .authors {
@@ -59,4 +60,51 @@
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
+}
+
+.titleWrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 100%;
+}
+
+.title {
+  font-family: var(--secondary-font);
+
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+
+  font-size: clamp(1.4rem, 5vw, 1.6rem);
+  word-break: break-word;
+  cursor: help;
+  max-height: calc(1.6rem * 1.4 * 3);
+  line-height: 1.4;
+}
+
+.tooltip {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 10;
+
+  margin-top: 0.4rem;
+  background-color: var(--primary-light-color);
+  padding: 0.6rem 0.8rem;
+  border-radius: 0.6rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  max-width: 25rem;
+  white-space: normal;
+
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease;
+}
+
+.titleWrapper:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
 }

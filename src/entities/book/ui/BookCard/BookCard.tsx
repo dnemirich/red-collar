@@ -17,16 +17,24 @@ export const BookCard = ({book}: Props) => {
     const handleClick = () => {
         navigate(ROUTES.BOOK + '/' + book.id)
     }
+    const handleKeyDown = (e: React.KeyboardEvent) => {
+        if (e.key === 'Enter') {
+            handleClick();
+        }
+    };
 
     return (
-        <li className={s.card} onClick={handleClick}>
+        <li className={s.card} onClick={handleClick} onKeyDown={handleKeyDown} role="button" tabIndex={0}>
             <ToggleFavouriteBtn book={book}/>
 
             {imageLinks?.thumbnail && <img alt={title} className={s.img} src={imageLinks.thumbnail}/>}
 
             <div className={s.content}>
-                <h2 className={s.title}>{title}</h2>
-                <h3 className={s.authors}>{authors && authors.length > 5 ? authors.slice(0, 5).join(', ').concat(' et al.') : authors?.join(', ')}</h3>
+                <div className={s.titleWrapper}>
+                    <h2 className={s.title}>{title}</h2>
+                    <div className={s.tooltip}>{title}</div>
+                </div>
+                <h3 className={s.authors}>{authors && authors.length > 3 ? authors.slice(0, 3).join(', ').concat(' et al.') : authors?.join(', ')}</h3>
                 <p className={s.description}>{description}</p>
             </div>
         </li>

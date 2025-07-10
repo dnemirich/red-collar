@@ -4,7 +4,7 @@
   align-items: flex-start;
   flex-wrap: wrap;
   gap: 3rem;
-  padding-top: 10%;
+  padding-top: 5%;
   margin: 0 auto;
 
   max-width: 100rem;
@@ -23,15 +23,15 @@
 
 .imgWrapper {
   position: relative;
-  width: 30rem;
-  height: 40rem;
+  width: clamp(20rem, 50vw, 30rem);
+  height: clamp(30rem, 50vw, 40rem);
   flex-shrink: 0;
 }
 
 .img {
   width: 100%;
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
   transition: opacity 0.3s ease;
 }
 
@@ -47,7 +47,7 @@
 
 .title {
   font-family: var(--secondary-font);
-  font-size: clamp(3rem, 5vw, 3rem);
+  font-size: clamp(2rem, 5vw, 3rem);
 }
 
 

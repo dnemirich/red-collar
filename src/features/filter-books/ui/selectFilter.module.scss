@@ -1,7 +1,7 @@
 .wrapper {
   position: relative;
-
-  width: 30rem;
+  width: 100%;
+  max-width: 40rem;
 }
 
 .select {
@@ -37,7 +37,8 @@
   color: var(--bg-color);
   font-size: clamp(1.6rem, 2.5vw, 2rem);
 
-  &:hover {
+  &:hover,
+  &:focus {
     background-color: var(--accent-color);
   }
 }

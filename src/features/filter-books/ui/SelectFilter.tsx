@@ -6,13 +6,13 @@ import s from './selectFilter.module.scss';
 
 type Props = {
     onSelect: (filter: Filter) => void;
+    value: Filter;
 };
 
 const FILTERS: Filter[] = ['ebooks', 'free-ebooks', 'full', 'paid-ebooks', 'partial'];
 
-export const SelectFilter = ({ onSelect }: Props) => {
+export const SelectFilter = ({onSelect, value }: Props) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [selected, setSelected] = useState<Filter>('ebooks');
     const ref = useRef<HTMLDivElement>(null);
 
     useEffect(() => {
@@ -27,7 +27,6 @@ export const SelectFilter = ({ onSelect }: Props) => {
     }, []);
 
     const handleSelect = (filter: Filter) => {
-        setSelected(filter);
         onSelect(filter);
         setIsOpen(false);
     };
@@ -39,16 +38,25 @@ export const SelectFilter = ({ onSelect }: Props) => {
                 onClick={() => setIsOpen((prev) => !prev)}
                 type="button"
             >
-                {selected}
+                {value}
             </button>
 
             {isOpen && (
                 <ul className={s.dropdown}>
                     {FILTERS.map((filter) => (
                         <li
+                            aria-selected={value === filter}
                             className={s.option}
                             key={filter}
                             onClick={() => handleSelect(filter)}
+                            onKeyDown={(e) => {
+                                if (e.key === 'Enter' || e.key === ' ') {
+                                    e.preventDefault();
+                                    handleSelect(filter);
+                                }
+                            }}
+                            role="option"
+                            tabIndex={0}
                         >
                             {filter}
                         </li>
