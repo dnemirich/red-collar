@@ -12,7 +12,7 @@
   border-radius: 0.8rem;
 
   cursor: pointer;
-  font-family: var(--primary-font);
+  font-family: var(--primary-font), sans-serif;
   font-size: clamp(2rem, 2.5vw, 2.4rem);
 
   &:focus {

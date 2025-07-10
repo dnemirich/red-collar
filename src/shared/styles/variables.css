@@ -5,7 +5,7 @@
     --pale-color: rgba(128, 128, 128, 0.26);
     --pale-text-color: rgba(128, 128, 128, 0.73);
     --dark-text-color: #666;
-    --primary-font: 'TT Commons', sans-serif;
-    --secondary-font: 'Redcollar', sans-serif;
+    --primary-font: 'TT Commons';
+    --secondary-font: 'Redcollar';
     --font-size-base: 10px;
 }

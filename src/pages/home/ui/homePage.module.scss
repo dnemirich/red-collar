@@ -19,7 +19,7 @@
 
 .infoPlaceholder {
   font-size: clamp(2rem, 2.5vw, 3.4rem);
-  font-family: var(--secondary-font);
+  font-family: var(--secondary-font), sans-serif;
   color: var(--accent-color);
 
   align-self: center;
