@@ -1,69 +1,60 @@
-# React + TypeScript + Vite
+# Red Collar Test Assignment
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is a test assignment project built with **React**, **Vite**, **TypeScript**, and **Zustand**. It demonstrates searching and filtering books using the Google Books API, with features like infinite scroll, debounced search, and a responsive UI.
 
-Currently, two official plugins are available:
+## 📦 Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React 19 + TypeScript
+- Vite
+- Zustand (state management)
+- TanStack React Query (data fetching & caching)
+- React Router v7
+- Axios
+- SCSS Modules
+- Eslint + Prettier (code quality)
+- React Toastify (notifications)
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Getting Started
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### 1. Clone the repo
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/your-username/red-collar.git
+cd red-collar
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm install
+```
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 3. Setup environment variables
+
+Create an .env file in the root of the project based on the provided .env.example
+```bash
+cp .env.example .env
+```
+Then replace YOUR_KEY with your own Google Books API key.
+
+
+### 4. Start development server
+```bash
+npm run dev
+```
+
+
+## 📁 Project Structure (Simplified)
+```graphql
+
+src/
+├── app/               # App root & providers
+├── entities/          # API types & logic
+├── features/          # Search, filter, favourites
+├── shared/            # Shared UI components, styles, constants
+├── widgets/           # BookList and composite UI parts
+└── pages/             # Page components (e.g., HomePage)
+
 ```
