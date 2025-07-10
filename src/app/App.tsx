@@ -1,6 +1,7 @@
 import {BookPage} from "pages/book";
 import {FavouritesPage} from "pages/favourites";
 import {HomePage} from "pages/home";
+import {NotFoundPage} from "pages/not-found";
 import {useEffect} from "react";
 import {Route, Routes} from "react-router";
 import {toast, ToastContainer} from "react-toastify";
@@ -41,6 +42,7 @@ function App() {
                 <Route element={<HomePage/>} index/>
                 <Route element={<FavouritesPage/>} path={ROUTES.FAVOURITES}/>
                 <Route element={<BookPage/>} path={`${ROUTES.BOOK}/:bookId`}/>
+                <Route element={<NotFoundPage/>} path={'*'}/>
             </Routes>
             <ToastContainer/>
         </MainLayout>
